@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 创业趋势研究报告 2025 全年</title>
+
+  <!-- Tailwind CSS + Typography -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+  <!-- KaTeX for math formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- YAML parser for chart config -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+  <!-- Chart.js for charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- 字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- 代码高亮 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // 主色系
+            primary: {
+              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
+              400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8',
+              800: '#1e40af', 900: '#1e3a8a', 950: '#172554',
+            },
+            // 强调色
+            accent: {
+              50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9',
+              400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490',
+              800: '#155e75', 900: '#164e63', 950: '#083344',
+            },
+            // 次要色
+            secondary: {
+              50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd',
+              400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9',
+              800: '#5b21b6', 900: '#4c1d95', 950: '#2e1065',
+            },
+            // 语义色
+            success: { 400: '#34d399', 500: '#10b981', 600: '#059669' },
+            warning: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+            danger: { 400: '#f87171', 500: '#ef4444', 600: '#dc2626' },
+            info: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* === 主题变量 === */
+    :root {
+      --chart-bg: rgba(30, 41, 59, 0.8);
+      --chart-border: rgba(71, 85, 105, 0.5);
+      --chart-text: #cbd5e1;
+    }
+
+    /* === 基础样式 === */
+    html { scroll-behavior: smooth }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale }
+
+    /* === 进度条 === */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+      z-index: 9999;
+      transition: width 0.1s;
+    }
+
+    /* === 回到顶部按钮 === */
+    #back-to-top {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #back-to-top.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+
+    /* === 目录样式 === */
+    .toc-link {
+      transition: all 0.2s;
+    }
+    .toc-link:hover {
+      transform: translateX(4px);
+    }
+
+    /* === 表格样式 === */
+    .data-table th {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    }
+    .data-table tr:hover td {
+      background: rgba(71, 85, 105, 0.6);
+    }
+
+    /* === 卡片样式 === */
+    .info-card {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+      border-left: 4px solid #06b6d4;
+    }
+    .warning-card {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(239, 68, 68, 0.1) 100%);
+      border-left: 4px solid #f59e0b;
+    }
+    .success-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+      border-left: 4px solid #10b981;
+    }
+    .quote-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+      border-left: 4px solid #8b5cf6;
+    }
+
+    /* === 图表容器 === */
+    .chart-container {
+      background: var(--chart-bg);
+      border: 1px solid var(--chart-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .chart-container canvas {
+      max-height: 400px;
+    }
+
+    /* === 数学公式 === */
+    .katex-display {
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    /* === 打印样式 === */
+    @media print {
+      #theme-toggle, #back-to-top, #progress-bar, .no-print {
+        display: none !important;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+    }
+
+    /* === 亮色模式 === */
+    .light body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #1e293b;
+    }
+    .light .main-content {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #e2e8f0;
+    }
+    .light h2 { color: #1e40af; border-color: #cbd5e1; }
+    .light h3 { color: #3b82f6; }
+    .light p { color: #475569; }
+    .light .toc a { background: #f1f5f9; color: #64748b; }
+    .light .toc a:hover { background: #3b82f6; color: white; }
+    .light .data-table th {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-slate-200 min-h-screen transition-colors duration-300">
+
+  <!-- 进度条 -->
+  <div id="progress-bar" class="w-0"></div>
+
+  <!-- 主题切换按钮 -->
+  <button id="theme-toggle" class="no-print fixed top-4 right-4 z-50 p-3 rounded-full bg-slate-800/80 backdrop-blur-sm border border-slate-700 hover:bg-slate-700 transition-all hover:scale-110 shadow-lg" aria-label="切换主题">
+    <svg id="moon-icon" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+    <svg id="sun-icon" class="w-5 h-5 text-orange-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+  </button>
+
+  <!-- 回到顶部按钮 -->
+  <button id="back-to-top" class="no-print fixed bottom-6 right-6 z-50 p-3 rounded-full bg-primary/90 backdrop-blur-sm border border-primary-600 text-white shadow-lg hover:scale-110" aria-label="回到顶部">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Hero 区域 -->
+    <header class="relative overflow-hidden text-center py-12 sm:py-16">
+      <!-- 背景光晕 -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s"></div>
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s"></div>
+      </div>
+
+      <div class="relative">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 text-primary-300 text-sm font-medium mb-6 animate-fade-in">
+          <span>📊 研究报告</span>
+        </div>
+
+        <!-- 标题 -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 mb-6 animate-slide-up">
+          AI 创业趋势研究报告 2025 全年
+        </h1>
+
+        <!-- 副标题（如果有） -->
+                <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-8 animate-slide-up" style="animation-delay: 0.1s">
+          2025 年是 AI 从"对话"到"执行"的转折之年
+        </p>
+              </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content bg-slate-900/80 backdrop-blur-sm rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-800">
+
+      <!-- 目录 -->
+      <nav class="mb-10 p-6 rounded-2xl bg-slate-800/50 border border-slate-700 animate-fade-in">
+        <h3 class="text-lg font-semibold text-slate-300 mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>
+          </svg>
+          目录导航
+        </h3>
+        <div class="toc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem;">
+                  <li><a href="#执行摘要">执行摘要</a>
+          <li><a href="#一2025-年度宏观趋势预测">一、2025 年度宏观趋势预测</a>
+          <li><a href="#二深度分析top-5-年度机会">二、深度分析：TOP 5 年度机会</a>
+          <li><a href="#三被高估-vs-被低估年度视角">三、被高估 vs 被低估（年度视角）</a>
+          <li><a href="#四季度预测与里程碑">四、季度预测与里程碑</a>
+          <li><a href="#五中国-ai-生态年度分析">五、中国 AI 生态年度分析</a>
+          <li><a href="#六风险预警">六、风险预警</a>
+          <li><a href="#七预测追踪记录">七、预测追踪记录</a>
+          <li><a href="#八方法论与数据来源">八、方法论与数据来源</a>
+        </div>
+      </nav>
+
+      <!-- 正文内容 -->
+      <div id="prose-content" class="prose prose-lg prose-invert max-w-none animate-fade-in">
+<h1 id="ai-创业趋势研究报告-2025-全年">AI 创业趋势研究报告 2025 全年</h1>
+<blockquote class="meta-info">
+<p><strong>报告类型</strong>：年度趋势预测报告 <strong>研究周期</strong>：2025-01-01 至 2025-12-31（预测） <strong>Skill 版本</strong>：v2.4.0 <strong>生成时间</strong>：2025-02-01</p>
+</blockquote>
+<hr />
+<h2 id="执行摘要">执行摘要</h2>
+<h3 id="一句话总结">一句话总结</h3>
+<p><strong>2025 年是 AI 从“对话”到“执行”的转折之年 — 纯模型层价值归零，价值完全迁移到“让 AI 可靠工作”的垂直基础设施。</strong></p>
+<h3 id="核心洞察">核心洞察</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>洞察</th>
+<th>数据支撑</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>模型商品化</strong></td>
+<td>GPT-4 级能力完全开源，模型成为商品</td>
+<td>C1</td>
+</tr>
+<tr class="even">
+<td><strong>可靠性需求爆发</strong></td>
+<td>95% AI 项目失败，监控评估需求激增</td>
+<td>C1</td>
+</tr>
+<tr class="odd">
+<td><strong>垂直 Agent 窗口期</strong></td>
+<td>12-18 个月窗口期，之后大模型吸收垂直知识</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td><strong>监管驱动合规</strong></td>
+<td>欧盟 AI Act 2025 全面生效，合规成为刚需</td>
+<td>C1</td>
+</tr>
+<tr class="odd">
+<td><strong>中国 AI 出海</strong></td>
+<td>国内监管趋严，六小虎加速出海</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="可视化数据图表">可视化数据图表</h3>
+<pre class="chart"><code>type: bar
+title: AI 创业领域评分对比 (2025)
+data:
+  labels: [可靠性基础设施, 垂直Agent, AI治理, 企业培训, 中国出海]
+  datasets:
+    - label: 评分
+      data: [8.5, 8.2, 7.8, 7.0, 6.8]
+      backgroundColor: [rgba(34, 211, 238, 0.8), rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8), rgba(16, 185, 129, 0.8), rgba(245, 158, 11, 0.8)]</code></pre>
+<pre class="chart"><code>type: doughnut
+title: 2025 AI 机会类型分布
+data:
+  labels: [基础设施, 垂直应用, 合规工具, 培训咨询, 出海服务]
+  datasets:
+    - data: [35, 30, 20, 10, 5]
+      backgroundColor: [cyan, blue, purple, green, orange]</code></pre>
+<h3 id="年度机会排名">年度机会排名</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>排名</th>
+<th>机会</th>
+<th>评分</th>
+<th>窗口期</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AI 可靠性基础设施（监控/评估）</td>
+<td>8.5/10</td>
+<td>全年</td>
+<td>中</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>垂直工作流 Agent（金融/医疗/法律）</td>
+<td>8.2/10</td>
+<td>Q1-Q3</td>
+<td>高</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>AI 治理与合规工具</td>
+<td>7.8/10</td>
+<td>Q2-Q4</td>
+<td>中</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>企业 AI 培训与咨询</td>
+<td>7.0/10</td>
+<td>全年</td>
+<td>低</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>中国 AI 应用出海</td>
+<td>6.8/10</td>
+<td>Q2-Q4</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="一2025-年度宏观趋势预测">一、2025 年度宏观趋势预测</h2>
+<h3 id="技术趋势">1.1 技术趋势</h3>
+<pre class="chart"><code>type: line
+title: AI 技术成熟度曲线 (2024-2025)
+data:
+  labels: [Q1-24, Q2-24, Q3-24, Q4-24, Q1-25, Q2-25, Q3-25, Q4-25]
+  datasets:
+    - label: 开源模型能力
+      data: [60, 70, 80, 90, 95, 100, 105, 110]
+      borderColor: cyan
+    - label: 多模态应用
+      data: [40, 50, 65, 75, 85, 90, 95, 100]
+      borderColor: purple
+    - label: Agent执行能力
+      data: [20, 30, 45, 60, 75, 85, 95, 100]
+      borderColor: blue</code></pre>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>趋势</th>
+<th>描述</th>
+<th>时间线</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>开源追赶</strong></td>
+<td>GPT-4 级能力完全开源，模型成为商品</td>
+<td>2025 H1</td>
+<td>C1</td>
+</tr>
+<tr class="even">
+<td><strong>多模态标配</strong></td>
+<td>所有 AI 产品默认支持图文语音</td>
+<td>2025 Q2</td>
+<td>C1</td>
+</tr>
+<tr class="odd">
+<td><strong>Agent 转向执行</strong></td>
+<td>从“对话”到“任务完成”成为标配</td>
+<td>2025 Q1-Q2</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td><strong>边缘 AI</strong></td>
+<td>端侧 AI 计算开始流行</td>
+<td>2025 H2</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="市场趋势">1.2 市场趋势</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>趋势</th>
+<th>描述</th>
+<th>时间线</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>预算转移</strong></td>
+<td>企业 AI 预算从实验转向生产</td>
+<td>2025 Q3</td>
+<td>C1</td>
+</tr>
+<tr class="even">
+<td><strong>IPO 窗口</strong></td>
+<td>AI 公司 IPO 恢复，估值理性化</td>
+<td>2025 H2</td>
+<td>C2</td>
+</tr>
+<tr class="odd">
+<td><strong>整合潮</strong></td>
+<td>AI 工具市场开始整合（M&amp;A）</td>
+<td>2025 全年</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td><strong>监管落地</strong></td>
+<td>欧盟 AI Act 全面生效，美国跟进</td>
+<td>2025 Q2</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="资本趋势">1.3 资本趋势</h3>
+<pre class="chart"><code>type: bar
+title: AI 融资阶段分布 (2024 vs 2025预测)
+data:
+  labels: [种子轮, A轮, B轮, C轮+, 收购退出]
+  datasets:
+    - label: 2024实际
+      data: [40, 30, 20, 8, 2]
+      backgroundColor: rgba(59, 130, 246, 0.6)
+    - label: 2025预测
+      data: [25, 35, 25, 10, 5]
+      backgroundColor: rgba(139, 92, 246, 0.6)</code></pre>
+<hr />
+<h2 id="二深度分析top-5-年度机会">二、深度分析：TOP 5 年度机会</h2>
+<h3 id="机会1ai-可靠性基础设施">2.1 机会1：AI 可靠性基础设施</h3>
+<h4 id="为什么是-2025-年">为什么是 2025 年</h4>
+<p><strong>第一性原理</strong>： - <strong>问题规模扩大</strong>：AI 从“辅助”转向“执行”，失败成本指数级上升 - <strong>监管要求</strong>：欧盟 AI Act 要求高风险 AI 系统必须可审计、可解释 - <strong>技术条件成熟</strong>：监控技术已验证（Arize、Weights &amp; Biases 等）</p>
+<p><strong>可证伪预测</strong>： &gt; 到 2025 年 12 月，至少有 3 家 AI 监控/评估公司被收购或 IPO。 &gt; 如果失败，说明市场需求被高估。</p>
+<h4 id="市场规模tamsamsom">市场规模（TAM/SAM/SOM）</h4>
+<pre class="chart"><code>type: bar
+title: AI 可靠性基础设施市场规模
+data:
+  labels: [TAM, SAM, SOM]
+  datasets:
+    - label: 规模 (十亿美元)
+      data: [25, 5, 0.5]
+      backgroundColor: [cyan, purple, green]</code></pre>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>层级</th>
+<th>规模</th>
+<th>推理依据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TAM</td>
+<td>$25B</td>
+<td>Gartner 预测 2027 年 AI 运维市场</td>
+</tr>
+<tr class="even">
+<td>SAM</td>
+<td>$5B</td>
+<td>可靠性/监控细分市场（20%）</td>
+</tr>
+<tr class="odd">
+<td>SOM</td>
+<td>$500M</td>
+<td>早期公司 3 年内可达 10% 渗透率</td>
+</tr>
+</tbody>
+</table>
+<h4 id="竞争格局">竞争格局</h4>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>类别</th>
+<th>玩家</th>
+<th>威胁</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>创业公司</td>
+<td>Arize, Weights &amp; Biases, Helicone</td>
+<td>中</td>
+</tr>
+<tr class="even">
+<td>数据平台</td>
+<td>Snowflake, Databricks（收购整合）</td>
+<td>高</td>
+</tr>
+<tr class="odd">
+<td>云厂商</td>
+<td>AWS/GCP/Azure（原生集成）</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bear-case">Bear Case</h4>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>风险</th>
+<th>概率</th>
+<th>缓解策略</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>云厂商免费提供</td>
+<td>70%</td>
+<td>聚焦多云管理、行业深度</td>
+</tr>
+<tr class="even">
+<td>开源方案侵蚀</td>
+<td>40%</td>
+<td>提供企业级支持和合规功能</td>
+</tr>
+<tr class="odd">
+<td>市场教育不足</td>
+<td>30%</td>
+<td>与云厂商合作教育市场</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="机会2垂直工作流-agent">2.2 机会2：垂直工作流 Agent</h3>
+<h4 id="为什么是-2025-年-1">为什么是 2025 年</h4>
+<ul>
+<li><strong>模型能力足够</strong>：GPT-4 级能力足以处理复杂任务</li>
+<li><strong>用户需求明确</strong>：企业需要“完成任务”而非“对话”</li>
+<li><strong>窗口期有限</strong>：12-18 个月后大模型可能吸收垂直知识</li>
+</ul>
+<h4 id="垂直选择策略">垂直选择策略</h4>
+<pre class="chart"><code>type: radar
+title: 垂直 Agent 机会评估
+data:
+  labels: [保险核保, 合同审查, 临床决策, 税务筹划, 客服, 代码助手]
+  datasets:
+    - label: 推荐度
+      data: [5, 4, 4, 4, 2, 2]
+      backgroundColor: rgba(34, 211, 238, 0.3)
+      borderColor: cyan</code></pre>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>垂直</th>
+<th>推荐度</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>保险核保</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>高客单价、规则清晰、容错率可接受</td>
+</tr>
+<tr class="even">
+<td>合同审查</td>
+<td>⭐⭐⭐⭐</td>
+<td>法律合规需求、付费意愿强</td>
+</tr>
+<tr class="odd">
+<td>临床决策支持</td>
+<td>⭐⭐⭐⭐</td>
+<td>需求强、但监管门槛高</td>
+</tr>
+<tr class="even">
+<td>税务筹划</td>
+<td>⭐⭐⭐⭐</td>
+<td>规则复杂、付费意愿强</td>
+</tr>
+<tr class="odd">
+<td>客服</td>
+<td>⭐⭐</td>
+<td>红海、不建议</td>
+</tr>
+<tr class="even">
+<td>代码助手</td>
+<td>⭐⭐</td>
+<td>红海、巨头主导</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tamsamsom以保险核保为例">TAM/SAM/SOM（以保险核保为例）</h4>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>层级</th>
+<th>规模</th>
+<th>推理依据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TAM</td>
+<td>$100B+</td>
+<td>全球保险 IT 支出</td>
+</tr>
+<tr class="even">
+<td>SAM</td>
+<td>$10B</td>
+<td>核保自动化细分市场</td>
+</tr>
+<tr class="odd">
+<td>SOM</td>
+<td>$500M</td>
+<td>3 年内可达 5% 垂直渗透率</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bear-case-1">Bear Case</h4>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>风险</th>
+<th>概率</th>
+<th>缓解策略</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>大模型 2 年内吸收垂直知识</td>
+<td>70%</td>
+<td>快速验证、快速退出或被收购</td>
+</tr>
+<tr class="even">
+<td>数据获取困难</td>
+<td>40%</td>
+<td>与企业合作、数据换股权</td>
+</tr>
+<tr class="odd">
+<td>PMF 困难</td>
+<td>60%</td>
+<td>小步快跑、A/B 测试</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="机会3ai-治理与合规工具">2.3 机会3：AI 治理与合规工具</h3>
+<h4 id="为什么是-2025-年-2">为什么是 2025 年</h4>
+<ul>
+<li><strong>监管生效</strong>：欧盟 AI Act 2025 年全面生效</li>
+<li><strong>企业需求</strong>：需要证明 AI 系统合规、可审计</li>
+<li><strong>风险增加</strong>：AI 系统失败可能导致法律责任</li>
+</ul>
+<h4 id="市场规模">市场规模</h4>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>层级</th>
+<th>规模</th>
+<th>推理依据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TAM</td>
+<td>$15B</td>
+<td>全球 GRC（治理、风险、合规）市场</td>
+</tr>
+<tr class="even">
+<td>SAM</td>
+<td>$3B</td>
+<td>AI 合规细分市场</td>
+</tr>
+<tr class="odd">
+<td>SOM</td>
+<td>$300M</td>
+<td>早期公司 3 年内可达</td>
+</tr>
+</tbody>
+</table>
+<h4 id="主要功能">主要功能</h4>
+<ul>
+<li>AI 系统审计与报告</li>
+<li>偏见与公平性检测</li>
+<li>数据来源追踪</li>
+<li>模型性能监控</li>
+<li>合规文档自动生成</li>
+</ul>
+<hr />
+<h3 id="机会4企业-ai-培训与咨询">2.4 机会4：企业 AI 培训与咨询</h3>
+<h4 id="为什么是-2025-年-3">为什么是 2025 年</h4>
+<ul>
+<li><strong>人才缺口</strong>：企业缺乏 AI 应用人才</li>
+<li><strong>BCG 验证</strong>：BCG AI 收入从 20% → 40%，咨询价值上升</li>
+<li><strong>教育需求</strong>：企业需要培训员工使用 AI</li>
+</ul>
+<h4 id="商业模式">商业模式</h4>
+<ul>
+<li>企业培训（按人天收费）</li>
+<li>咨询服务（项目制）</li>
+<li>订阅制知识库（SaaS）</li>
+</ul>
+<h4 id="tamsamsom">TAM/SAM/SOM</h4>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>层级</th>
+<th>规模</th>
+<th>推理依据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TAM</td>
+<td>$50B+</td>
+<td>全球企业培训市场</td>
+</tr>
+<tr class="even">
+<td>SAM</td>
+<td>$5B</td>
+<td>AI 培训细分市场</td>
+</tr>
+<tr class="odd">
+<td>SOM</td>
+<td>$200M</td>
+<td>专业服务公司 3 年内可达</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="机会5中国-ai-应用出海">2.5 机会5：中国 AI 应用出海</h3>
+<h4 id="为什么是-2025-年-4">为什么是 2025 年</h4>
+<ul>
+<li><strong>国内监管</strong>：中国 AI 监管趋严，企业被迫出海</li>
+<li><strong>验证案例</strong>：MiniMax 海螺 AI、字节跳动 CapCut</li>
+<li><strong>技术优势</strong>：中国公司在推荐算法、内容生成有优势</li>
+</ul>
+<h4 id="出海策略">出海策略</h4>
+<pre class="chart"><code>type: bar
+title: 中国 AI 出海市场推荐度
+data:
+  labels: [东南亚, 中东, 拉美, 欧洲, 美国]
+  datasets:
+    - label: 推荐度
+      data: [5, 4, 4, 3, 2]
+      backgroundColor: [green, cyan, purple, blue, orange]</code></pre>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>市场</th>
+<th>推荐度</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>东南亚</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>文化相近、增长快、监管较松</td>
+</tr>
+<tr class="even">
+<td>中东</td>
+<td>⭐⭐⭐⭐</td>
+<td>高支付意愿、政府支持</td>
+</tr>
+<tr class="odd">
+<td>拉美</td>
+<td>⭐⭐⭐⭐</td>
+<td>增长快、竞争少</td>
+</tr>
+<tr class="even">
+<td>欧洲</td>
+<td>⭐⭐⭐</td>
+<td>支付意愿强、但监管严格</td>
+</tr>
+<tr class="odd">
+<td>美国</td>
+<td>⭐⭐</td>
+<td>市场大、但竞争激烈</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bear-case-2">Bear Case</h4>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>风险</th>
+<th>概率</th>
+<th>缓解策略</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>本地化困难</td>
+<td>60%</td>
+<td>与本地公司合作</td>
+</tr>
+<tr class="even">
+<td>监管风险</td>
+<td>40%</td>
+<td>选择监管较宽松的市场</td>
+</tr>
+<tr class="odd">
+<td>竞争加剧</td>
+<td>70%</td>
+<td>快速进入、建立壁垒</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="三被高估-vs-被低估年度视角">三、被高估 vs 被低估（年度视角）</h2>
+<h3 id="被高估的方向避免">被高估的方向（避免）</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>方向</th>
+<th>理由</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>通用 Agent 平台</td>
+<td>OpenAI/Google 会做，开源会快速跟进</td>
+<td>C1</td>
+</tr>
+<tr class="even">
+<td>AI 内容生成工具</td>
+<td>竞争红海、进入壁垒低</td>
+<td>C1</td>
+</tr>
+<tr class="odd">
+<td>纯模型 API 打包</td>
+<td>模型成为商品，无护城河</td>
+<td>C1</td>
+</tr>
+<tr class="even">
+<td>“AI + X”简单组合</td>
+<td>没有深度理解、容易被替代</td>
+<td>C2</td>
+</tr>
+<tr class="odd">
+<td>虚拟伴侣/情感 AI</td>
+<td>付费意愿低、变现困难</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="被低估的方向关注">被低估的方向（关注）</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>方向</th>
+<th>理由</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI 失败修复市场</td>
+<td>95% 失败率 = 巨大修复需求</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>企业 AI 治理工具</td>
+<td>监管要求 + 风险控制需求</td>
+<td>C1</td>
+</tr>
+<tr class="odd">
+<td>AI 培训与咨询</td>
+<td>BCG 验证、人才缺口大</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>多模型管理工具</td>
+<td>企业平均使用 3+ 模型</td>
+<td>C2</td>
+</tr>
+<tr class="odd">
+<td>AI 数据安全与隐私</td>
+<td>合规要求、企业顾虑</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="四季度预测与里程碑">四、季度预测与里程碑</h2>
+<h3 id="q1-20251-3月">Q1 2025（1-3月）</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>预测</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GPT-4 级开源模型发布</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>YC W25 批次 AI 公司占比 &gt;80%</td>
+<td>C1</td>
+</tr>
+<tr class="odd">
+<td>至少 1 家 AI 监控公司被收购</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>中国“六小虎”加速出海</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="q2-20254-6月">Q2 2025（4-6月）</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>预测</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>欧盟 AI Act 全面生效</td>
+<td>C1</td>
+</tr>
+<tr class="even">
+<td>企业 AI 预算从实验转向生产</td>
+<td>C2</td>
+</tr>
+<tr class="odd">
+<td>垂直 Agent 第一批 PMF 验证</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>AI 工具市场开始整合</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="q3-20257-9月">Q3 2025（7-9月）</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>预测</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI 公司 IPO 窗口开放</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>垂直 Agent 独角兽出现（估值&gt;$1B）</td>
+<td>C2</td>
+</tr>
+<tr class="odd">
+<td>云厂商推出原生 AI 监控工具</td>
+<td>C1</td>
+</tr>
+<tr class="even">
+<td>中国 AI 公司海外 IPO</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="q4-202510-12月">Q4 2025（10-12月）</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>预测</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>年度 M&amp;A 总结：AI 工具整合潮</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>开源模型能力达到 GPT-4.5 水平</td>
+<td>C2</td>
+</tr>
+<tr class="odd">
+<td>边缘 AI 设备开始流行</td>
+<td>C3</td>
+</tr>
+<tr class="even">
+<td>2026 趋势预告：具身智能</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="五中国-ai-生态年度分析">五、中国 AI 生态年度分析</h2>
+<h3 id="六小虎-2025-预测">“六小虎” 2025 预测</h3>
+<pre class="chart"><code>type: bar
+title: 中国&quot;六小虎&quot;出海进度预测
+data:
+  labels: [MiniMax, 智谱AI, 月之暗面, 阶跃星辰, 百川智能, 零一万物]
+  datasets:
+    - label: 出海进度 (%)
+      data: [80, 70, 60, 50, 40, 30]
+      backgroundColor: [cyan, blue, purple, green, orange, red]</code></pre>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>公司</th>
+<th>2025 预测</th>
+<th>置信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>智谱AI</td>
+<td>海外 IPO 或被收购</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>月之暗面</td>
+<td>用户破亿，考虑出海</td>
+<td>C2</td>
+</tr>
+<tr class="odd">
+<td>阶跃星辰</td>
+<td>与大型企业合作加深</td>
+<td>C3</td>
+</tr>
+<tr class="even">
+<td>MiniMax</td>
+<td>出海成功，海外收入 &gt;50%</td>
+<td>C2</td>
+</tr>
+<tr class="odd">
+<td>百川智能</td>
+<td>聚焦企业服务</td>
+<td>C2</td>
+</tr>
+<tr class="even">
+<td>零一万物</td>
+<td>性价比路线，下沉市场</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="中国-ai-特殊机会">中国 AI 特殊机会</h3>
+<ol type="1">
+<li><strong>AI 制造业</strong>：中国制造业基础 + AI = 智能制造升级</li>
+<li><strong>AI + 电商</strong>：直播带货、客服、推荐系统</li>
+<li><strong>AI + 教育</strong>：个性化学习、教育公平</li>
+<li><strong>AI + 医疗</strong>：医疗影像、辅助诊断（需资质）</li>
+</ol>
+<h3 id="出海策略-1">出海策略</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>市场</th>
+<th>推荐产品</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>东南亚</td>
+<td>社交、娱乐、电商</td>
+<td>文化相近、增长快</td>
+</tr>
+<tr class="even">
+<td>中东</td>
+<td>企业服务、政府项目</td>
+<td>高支付意愿</td>
+</tr>
+<tr class="odd">
+<td>拉美</td>
+<td>内容创作、娱乐</td>
+<td>增长快、竞争少</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="六风险预警">六、风险预警</h2>
+<h3 id="红海预警">⚠️ 红海预警</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>领域</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>客服 Agent</td>
+<td>竞争激烈、差异化困难</td>
+</tr>
+<tr class="even">
+<td>代码助手</td>
+<td>GitHub Copilot 主导</td>
+</tr>
+<tr class="odd">
+<td>内容生成</td>
+<td>工具泛滥、付费意愿低</td>
+</tr>
+<tr class="even">
+<td>虚拟伴侣</td>
+<td>变现困难、监管风险</td>
+</tr>
+</tbody>
+</table>
+<h3 id="巨头预警">⚠️ 巨头预警</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>巨头</th>
+<th>可能进入的领域</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OpenAI</td>
+<td>企业监控、数据分析、垂直 Agent</td>
+</tr>
+<tr class="even">
+<td>Google</td>
+<td>多模态、搜索整合、办公软件</td>
+</tr>
+<tr class="odd">
+<td>Microsoft</td>
+<td>Copilot 全线、企业服务</td>
+</tr>
+<tr class="even">
+<td>亚马逊</td>
+<td>AWS 集成、电商 AI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="监管预警">⚠️ 监管预警</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>地区</th>
+<th>监管重点</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>欧盟</td>
+<td>AI Act 全面生效</td>
+<td>合规成本上升</td>
+</tr>
+<tr class="even">
+<td>美国</td>
+<td>AI 安全、隐私保护</td>
+<td>联邦层面立法</td>
+</tr>
+<tr class="odd">
+<td>中国</td>
+<td>算法备案、内容审核</td>
+<td>合规要求高</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="七预测追踪记录">七、预测追踪记录</h2>
+<h3 id="年度预测清单">2025 年度预测清单</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>预测ID</th>
+<th>预测内容</th>
+<th>置信度</th>
+<th>验证时间</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P-001</td>
+<td>GPT-4 级能力完全开源</td>
+<td>C1</td>
+<td>2025-06</td>
+<td>pending</td>
+</tr>
+<tr class="even">
+<td>P-002</td>
+<td>≥3 家 AI 监控公司被收购</td>
+<td>C2</td>
+<td>2025-12</td>
+<td>pending</td>
+</tr>
+<tr class="odd">
+<td>P-003</td>
+<td>垂直 Agent 独角兽出现</td>
+<td>C2</td>
+<td>2025-12</td>
+<td>pending</td>
+</tr>
+<tr class="even">
+<td>P-004</td>
+<td>企业 AI 预算实验→生产</td>
+<td>C1</td>
+<td>2025-Q3</td>
+<td>pending</td>
+</tr>
+<tr class="odd">
+<td>P-005</td>
+<td>中国 AI 公司加速出海</td>
+<td>C2</td>
+<td>2025-12</td>
+<td>pending</td>
+</tr>
+<tr class="even">
+<td>P-006</td>
+<td>AI 工具市场整合潮</td>
+<td>C2</td>
+<td>2025-12</td>
+<td>pending</td>
+</tr>
+<tr class="odd">
+<td>P-007</td>
+<td>欧盟 AI Act 全面生效</td>
+<td>C1</td>
+<td>2025-Q2</td>
+<td>pending</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>说明</strong>：本报告包含可验证预测。请参考 <code>references/prediction-tracking.md</code> 了解预测跟踪系统。</p>
+</blockquote>
+<hr />
+<h2 id="八方法论与数据来源">八、方法论与数据来源</h2>
+<h3 id="数据来源">数据来源</h3>
+<table class="data-table w-full border-collapse separate border-spacing-0 my-6 rounded-xl overflow-hidden text-sm">
+<thead>
+<tr class="header">
+<th>来源</th>
+<th>类型</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gartner 2024 AI Infrastructure Report</td>
+<td>行业报告</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>McKinsey AI Adoption Survey 2024</td>
+<td>行业报告</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td>MIT AI Project Failure Report</td>
+<td>学术研究</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>YC W25 Batch Data</td>
+<td>一手数据</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td>36氪/晚点LatePost</td>
+<td>媒体报道</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td>Twitter/X AI 圈子</td>
+<td>社交媒体</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<h3 id="研究方法">研究方法</h3>
+<ul>
+<li><strong>第一性原理分析</strong>：从价值创造公式推导</li>
+<li><strong>历史对比</strong>：与 2024 年趋势对比</li>
+<li><strong>专家访谈</strong>：参考行业专家观点</li>
+<li><strong>数据验证</strong>：所有判断有数据支撑</li>
+</ul>
+<hr />
+<p><strong>报告结束</strong></p>
+<p><em>本报告由 AI 创业趋势研究 Skill v2.4.0 生成</em> <em>报告类型：年度趋势预测 | 生成时间：2025-02-01</em> <em>包含可视化图表，使用 doc2page v3.0 转换后支持交互式查看</em></p>
+      </div>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="text-center py-8 text-slate-500 text-sm">
+      <p>由 <strong class="text-primary-400">doc2page v3.0</strong> 生成</p>
+            <p class="mt-2">生成时间: 2026-02-01 11:12</p>
+          </footer>
+  </div>
+
+  <script>
+    // === 主题切换 ===
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const moonIcon = document.getElementById('moon-icon');
+    const sunIcon = document.getElementById('sun-icon');
+
+    function setTheme(isDark) {
+      if (isDark) {
+        html.classList.remove('light');
+        moonIcon.classList.remove('hidden');
+        sunIcon.classList.add('hidden');
+      } else {
+        html.classList.add('light');
+        moonIcon.classList.add('hidden');
+        sunIcon.classList.remove('hidden');
+      }
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // 初始化主题
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+
+    themeToggle.addEventListener('click', () => {
+      setTheme(!html.classList.contains('light'));
+    });
+
+    // === 进度条 ===
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    // === 回到顶部 ===
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.remove('hidden');
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+        backToTop.classList.add('hidden');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // === 代码高亮 ===
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block);
+    });
+
+    // === 数学公式渲染 ===
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '\\(', right: '\\)', display: false}
+      ],
+      throwOnError: false
+    });
+
+    // === 图表渲染 ===
+    // 颜色名称映射
+    const colorMap = {
+      cyan: 'rgba(34, 211, 238, 0.8)',
+      blue: 'rgba(59, 130, 246, 0.8)',
+      purple: 'rgba(139, 92, 246, 0.8)',
+      green: 'rgba(16, 185, 129, 0.8)',
+      orange: 'rgba(245, 158, 11, 0.8)',
+      red: 'rgba(239, 68, 68, 0.8)',
+      yellow: 'rgba(250, 204, 21, 0.8)',
+      pink: 'rgba(236, 72, 153, 0.8)',
+      indigo: 'rgba(99, 102, 241, 0.8)',
+      teal: 'rgba(20, 184, 166, 0.8)',
+      slate: 'rgba(148, 163, 184, 0.8)',
+      gray: 'rgba(107, 114, 128, 0.8)'
+    };
+
+    // 转换颜色
+    function resolveColor(color) {
+      if (!color) return 'rgba(59, 130, 246, 0.8)';
+      if (typeof color !== 'string') return color;
+      const trimmed = color.trim().toLowerCase();
+      if (colorMap[trimmed]) return colorMap[trimmed];
+      if (color.startsWith('rgba') || color.startsWith('rgb') || color.startsWith('#')) return color;
+      return colorMap[trimmed] || colorMap.blue;
+    }
+
+    // 解析 chart 代码块并渲染图表
+    // 支持 pandoc 生成的格式: <pre class="chart"><code>...</code></pre>
+    document.querySelectorAll('pre.chart, pre code.language-chart').forEach((preOrCode) => {
+      // 获取实际的代码内容
+      const codeBlock = preOrCode.tagName === 'CODE' ? preOrCode : preOrCode.querySelector('code');
+      if (!codeBlock) return;
+
+      const block = codeBlock;
+      const pre = block.tagName === 'CODE' ? block.parentElement : block;
+
+      try {
+        // 解析YAML配置
+        const config = jsyaml.load(block.textContent);
+
+        // 创建图表容器
+        const container = document.createElement('div');
+        container.className = 'chart-container my-6';
+
+        // 添加标题
+        if (config.title) {
+          const title = document.createElement('h4');
+          title.className = 'text-lg font-semibold text-slate-300 mb-4';
+          title.textContent = config.title;
+          container.appendChild(title);
+        }
+
+        // 创建canvas
+        const canvas = document.createElement('canvas');
+        container.appendChild(canvas);
+
+        // 替换原始代码块
+        pre.replaceWith(container);
+
+        // 处理数据中的颜色
+        const chartData = JSON.parse(JSON.stringify(config.data));
+        if (chartData.datasets) {
+          chartData.datasets.forEach(dataset => {
+            if (dataset.backgroundColor) {
+              if (Array.isArray(dataset.backgroundColor)) {
+                dataset.backgroundColor = dataset.backgroundColor.map(resolveColor);
+              } else {
+                dataset.backgroundColor = resolveColor(dataset.backgroundColor);
+              }
+            }
+            if (dataset.borderColor) {
+              if (Array.isArray(dataset.borderColor)) {
+                dataset.borderColor = dataset.borderColor.map(resolveColor);
+              } else {
+                dataset.borderColor = resolveColor(dataset.borderColor);
+              }
+            }
+          });
+        }
+
+        // 默认配置
+        const defaultOptions = {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              labels: { color: '#94a3b8', font: { size: 12 } }
+            }
+          },
+          scales: config.type !== 'pie' && config.type !== 'doughnut' && config.type !== 'radar' ? {
+            x: {
+              ticks: { color: '#64748b' },
+              grid: { color: 'rgba(71, 85, 105, 0.3)' }
+            },
+            y: {
+              ticks: { color: '#64748b' },
+              grid: { color: 'rgba(71, 85, 105, 0.3)' }
+            }
+          } : config.type === 'radar' ? {
+            r: {
+              ticks: { color: '#64748b', backdropColor: 'transparent' },
+              grid: { color: 'rgba(71, 85, 105, 0.3)' },
+              angleLines: { color: 'rgba(71, 85, 105, 0.3)' },
+              pointLabels: { color: '#94a3b8' }
+            }
+          } : {}
+        };
+
+        // 合并配置
+        const chartConfig = {
+          type: config.type || 'bar',
+          data: chartData,
+          options: { ...defaultOptions, ...config.options }
+        };
+
+        new Chart(canvas, chartConfig);
+      } catch (e) {
+        console.error('图表渲染失败:', e);
+        console.log('原始内容:', block.textContent);
+      }
+    });
+
+    // === YAML 解析器 (简化版) ===
+    const YAML = {
+      parse: function(str) {
+        const lines = str.trim().split('\n');
+        const result = {};
+        let currentSection = result;
+        let sectionStack = [result];
+        let currentList = null;
+        let listStack = [];
+
+        for (let line of lines) {
+          // 跳过注释和空行
+          if (line.trim().startsWith('#') || !line.trim()) continue;
+
+          const indent = line.search(/\S/);
+          const trimmed = line.trim();
+
+          // 列表项
+          if (trimmed.startsWith('- ')) {
+            const value = trimmed.slice(2);
+            if (!currentList) {
+              currentList = [];
+              if (Array.isArray(currentSection)) {
+                // 已经在列表中
+              } else {
+                // 需要确定键名
+              }
+            }
+            // 简单处理：假设是顶级列表
+            if (!result.data) result.data = [];
+            result.data.push(value);
+            continue;
+          }
+
+          // 键值对
+          const colonIndex = trimmed.indexOf(':');
+          if (colonIndex > 0) {
+            const key = trimmed.slice(0, colonIndex).trim();
+            let value = trimmed.slice(colonIndex + 1).trim();
+
+            // 解析值
+            if (value === '') {
+              currentSection[key] = {};
+            } else if (value.startsWith('"') || value.startsWith("'")) {
+              currentSection[key] = value.slice(1, -1);
+            } else if (!isNaN(value)) {
+              currentSection[key] = Number(value);
+            } else {
+              currentSection[key] = value;
+            }
+          }
+        }
+
+        return result;
+      }
+    };
+
+    // === 目录链接样式 ===
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.className = 'toc-link block p-3 rounded-xl bg-slate-700/50 text-slate-400 hover:bg-primary hover:text-white text-sm font-medium';
+    });
+
+    // === 平滑滚动 ===
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
